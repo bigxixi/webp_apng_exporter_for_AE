@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ExtensionManifest Version="6.0" ExtensionBundleId="com.bigxixi.WebpApngExporter"  ExtensionBundleVersion="1.0.0"
+		ExtensionBundleName="BX-WebpApngExporter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ExtensionList>
+		<Extension Id="com.bigxixi.WebpApngExporter" Version="1.0" />
+	</ExtensionList>
+	<ExecutionEnvironment>
+		<HostList>
+			<Host Name="AEFT" Version="[13.0,15.9]"/>
+            <Host Name="AEFX" Version="[13.0,15.9]"/>
+		</HostList>
+		<LocaleList>
+			<Locale Code="All" />
+		</LocaleList>
+		<RequiredRuntimeList>
+			<RequiredRuntime Name="CSXS" Version="6.0" />
+		</RequiredRuntimeList>
+	</ExecutionEnvironment>
+    
+	<DispatchInfoList>
+		<Extension Id="com.bigxixi.WebpApngExporter">
+			<DispatchInfo >
+				<Resources>
+                    <MainPath>./index.html</MainPath>
+										<ScriptPath>./jsx/helper.jsx</ScriptPath>
+				</Resources>
+				<Lifecycle>
+					<AutoVisible>true</AutoVisible>
+				</Lifecycle>
+				<UI>
+					<Type>Panel</Type>
+					<Menu>BX Webp/Apng Exporter</Menu>
+					<Geometry>
+						<Size>
+							<Height>100</Height>
+							<Width>250</Width>
+						</Size>
+						<!-- <MaxSize>
+							<Height>500</Height>
+							<Width>500</Width>
+						</MaxSize>
+						<MinSize>
+							<Height>100</Height>
+							<Width>250</Width>
+						</MinSize> -->
+					</Geometry>
+				</UI>
+			</DispatchInfo>
+		</Extension>
+	</DispatchInfoList>
+</ExtensionManifest>

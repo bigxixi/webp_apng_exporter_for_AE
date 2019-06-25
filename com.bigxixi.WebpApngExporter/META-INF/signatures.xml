@@ -1,0 +1,39 @@
+<signatures>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="PackageSignature">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<Reference Type="http://www.w3.org/2000/09/xmldsig#Manifest" URI="#PackageContents">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<DigestValue>jPJVmhhEKyEaLJC1aHBi+XpFgVl6fJXU0ZlwAcHk/nk=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue Id="PackageSignatureValue">g0bc8oghv8Kr3Rx6xWNMLkWdpl6kUzExowEhz1Tnau628gtP8Lp6y+f98gWdpW2J
+5riCBKvfVyngYqVmfkv9O70zQ9c6FmbVnggRDR5bVyPKzRPNJg3YRzMS8+LiJsGT
+9PvjlSEaYfiq5dk4SxMk3CL5RipIdS38kCuzOVp2140=</SignatureValue>
+
+<KeyInfo>
+<X509Data>
+<X509Certificate>MIICBzCCAXACCQDO1p7Yuhk1FjANBgkqhkiG9w0BAQUFADBIMQswCQYDVQQGEwJD
+TjERMA8GA1UECBMISGFuZ3pob3UxFDASBgNVBAoTC2JpZ3hpeGkuY29tMRAwDgYD
+VQQDEwdiaWd4aXhpMB4XDTE5MDYyNTA2MTYwMVoXDTMwMDkxMTA2MTYwMVowSDEL
+MAkGA1UEBhMCQ04xETAPBgNVBAgTCEhhbmd6aG91MRQwEgYDVQQKEwtiaWd4aXhp
+LmNvbTEQMA4GA1UEAxMHYmlneGl4aTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkC
+gYEAzIntqILJkzWczPm62ir2rJVGJvQkydevQWPNjLOXPDTo6hDpRgCoHrEDmqtv
+BjvZqFw5j47rWprJ1ewMXK4vEB1hQOYHMyg/2rYutwg4eT8JNMacaZxnvKaj+XzL
+y0x435D39GELCJMSGcuVtINsf6YE9jIEy2K2wCiGf4JZge8CAwEAATANBgkqhkiG
+9w0BAQUFAAOBgQC3e8DTvq0wHCUu5jAb8SbgqaOKOnibBNAB8ZEo8G9kIUvYNbL6
+HP+Awmu7SblN9eHUcFyW4XtDDmWOOduA52OyeACZymz/rBOwlWsY2L6Ziq8QYT6E
+DM7ZUGkgjSKTB9ENTvzHQ+g5S5Upu8DeAQjVe10uT8tXegNo5Bidj38w6Q==
+</X509Certificate>
+</X509Data>
+</KeyInfo>
+<Object>
+<Manifest Id="PackageContents">
+<Reference URI="mimetype"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>b07Onu9cTlGK1WpvgtFOlfk+Tl0HscuNIt6GZtesPX8=</DigestValue></Reference><Reference URI="index.html"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>35jMUO/UX+N1PH3htbj2CQyMkcfvKGn2WiGCyOkNVBI=</DigestValue></Reference><Reference URI="imgs/checked.svg"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>cVeAm7TjZrw4x+5hNusIejMxu+QWYwOv7UzmNP8FBoQ=</DigestValue></Reference><Reference URI="js/json2.js"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>zH3cLaBTp7kivA2nAj9zS7gNbgC4eSZxUgbVMGZLxBU=</DigestValue></Reference><Reference URI="js/Vulcan.js"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>OysS3HWTHkjlbbj7T81xjhonv4GId5Phl2FyhVVEplU=</DigestValue></Reference><Reference URI="js/AgoraLib.js"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>NstJZl8clh8kKbsN47siieah6lBX62JY9MZYnN/fsbo=</DigestValue></Reference><Reference URI="js/CSInterface.js"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>FnD6iMg3jvZtEnv090MtbfZXuAiYLZEhEwaOqKu5p0o=</DigestValue></Reference><Reference URI="CSXS/manifest.xml"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>64nI7VM9PC8qFxILcokgJ4olKCuxYHOSdXmiaWcZtOU=</DigestValue></Reference><Reference URI="apps/win/apngasm64.exe"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>oCYVU/FcheRECMqfNHqEE5M+pVj5rp6HuNGWs4I1yT4=</DigestValue></Reference><Reference URI="apps/win/img2webp.exe"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>b7vuYOovj8sjtVmCIOVhIDg86rNlAe9t2mnROIYQ4tg=</DigestValue></Reference><Reference URI="apps/win/pngquant.exe"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>ax1OaFpPWzy+2bnHtxx/da6GBoR4PkqCdM3GYkfRH64=</DigestValue></Reference><Reference URI="apps/mac/apngasm"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>9XdlzElIprDfqGyCEIMoaXD8ELz+E1pyDil2rbwurRs=</DigestValue></Reference><Reference URI="apps/mac/img2webp"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>EgAb4th77PEcLWsvUHhXGN8JdRJMtyOp94llEaTj52o=</DigestValue></Reference><Reference URI="apps/mac/pngquant"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>J8K+XnJXZyjupNcZXiTOwAT9cry2I3aj5ZS/IhfZVaA=</DigestValue></Reference><Reference URI="jsx/helper.jsx"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>udMB9hP7puOnWWBJPLfmzCgvCkikcFKDdeyoVckWtAE=</DigestValue></Reference></Manifest>
+</Object>
+</Signature>
+</signatures>

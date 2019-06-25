@@ -1,0 +1,897 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+<meta name="viewport" content="target-densitydpi=device-dpi,width=468,user-scalable=no" /> 
+<title>BX Webp/Apng Exporter</title>
+<head>
+    <script type="text/javascript" src="js/CSInterface.js"></script>
+    <style>
+	*{
+	    margin: 0 auto;
+	    padding: 0 auto;
+	}
+	html{
+	    position: relative;
+	    width:100%;
+	    height:100%;
+	}
+	body{
+	    width: 100%;
+	    height: 100%;
+	    position: relative;
+	    margin: 0 auto;
+	    padding: 0;
+        background: #303030;
+	}
+.BX_AEComposition{
+    /* background: url("imgs/mainPal.png"); */
+    background: #303030;
+    width: 468px;
+    height: 250px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    transform: translate3D(0,0,0) scale(1,1);
+    transform-origin:50% 0%;
+}
+.newPanelMatt{
+    background: #303030;
+    opacity: 0;
+    width: 468px;
+    height: 250px;
+    left: 0px;
+    top: 0px;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    /* animation: fadeIn 0.1s ease-in 0s 1 normal forwards; */
+}
+.newPanelIn{
+    animation: fadeIn 0.1s ease 0s 1 normal forwards;
+    -webkit-animation: fadeIn 0.1s ease 0s 1 normal forwards;
+}
+.newPanelOut{
+    animation: fadeOut 0.1s ease 0s 1 normal forwards;
+    -webkit-animation: fadeOut 0.1s ease 0s 1 normal forwards;
+}
+@keyframes fadeIn{
+    0%{opacity: 0;}
+    100%{opacity: 0.9;}
+}
+@-webkit-keyframes fadeIn{
+    0%{opacity: 0;}
+    100%{opacity: 0.9;}
+}
+@keyframes fadeOut{
+    0%{opacity: 0.9;}
+    100%{opacity: 0;}
+}
+@-webkit-keyframes fadeOut{
+    0%{opacity: 0.9;}
+    100%{opacity: 0;}
+}
+.titleText{
+    width: 260px;
+    height: 20px;
+    top: 10px;
+    left: 112px;
+
+    padding: 0 auto;
+    margin: 0 auto;
+
+    position: absolute;
+
+    font-family: PingFangSC-Semibold,"Microsoft YaHei";
+    font-weight: 900;
+    font-size: 18px;
+    color: #CCA4F6;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+.splitLine{
+    left: 13px;
+    top: 43px;
+    width: 436px;
+    height: 0px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+
+    border: 1px dashed rgba(255,255,255,0.30);
+}
+.webpPathBtnPos{
+    left: 16px;
+    top: 62px;
+    width: 93px;
+    height: 36px;
+}
+
+.apngPathBtnPos{
+    left: 16px;
+    top: 126px;
+    width: 93px;
+    height: 36px;
+}
+
+.normalBtn{
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    /* background: rgba(153,153,153,0.10); */
+    background: rgba(153,153,153,0.10);
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    border-radius: 2px;
+    
+    font-family: PingFangSC-Light,"Microsoft YaHei";
+    font-size: 14px;
+    color: rgba(255,255,255,0.87);
+    letter-spacing: 0.5px;
+    text-align: center;
+    padding: 0 auto;
+    margin: 0 auto;
+
+    transition: all ease-out 0.1s; 
+}
+.closeBTN{
+    width: 100px;
+    height: 36px;
+    left: 84px;
+}
+.homeBTN{
+    width: 100px;
+    height: 36px;
+    left: 284px;
+}
+
+.normalBtn:hover{
+    transform: translate(-1px,-2px);
+    background: rgba(153, 153, 153, 0.221);
+    box-shadow: 1 1 3px 0 rgba(0,0,0,0.12), 0 3px 3px 0 rgba(0,0,0,0.24);
+    border-radius: 2px;
+    cursor: pointer;
+
+    color: rgba(255,255,255,1);
+}
+.normalBtn:active{
+    transform: translate(0px,0px);
+    background: rgba(153,153,153,0.10);
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    border-radius: 2px;
+    cursor: pointer;
+
+    color: rgba(255,255,255,0.87);
+}
+.btntxt1{
+    left: 7.5px;
+    top: 9px;
+    width: 78px;
+    height: 20px;
+    text-align: center;
+    position: absolute;
+    
+
+
+}
+.btntxt2{
+    left: 79px;
+    top: 9px;
+    width: 78px;
+    height: 20px;
+    position: absolute;
+/*     
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+
+    font-family: PingFangSC-Light;
+    font-size: 14px;
+    color: rgba(0,0,0,0.87);
+    letter-spacing: 0.5px;
+    text-align: center; */
+}
+.cbtxt{
+    left: 361px;
+    top: 71px;
+    width: 64px;
+    height: 20px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+
+    font-family: PingFangSC-Light,"Microsoft YaHei";
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+.pathLine1{
+    left: 123.5px;
+    top: 95px;
+    width: 227px;
+    height: 2px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.pathLine2{
+    left: 123.5px;
+    top: 159px;
+    width: 227px;
+    height: 2px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.helpBtn{
+    left: 16px;
+    top: 191px;
+    width: 93px;
+    height: 36px;
+    
+}
+.genBtn{
+    left: 123px;
+    top: 191px;
+    width: 229px;
+    height: 36px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+
+    /* background: #009688; */
+    background:#DCB3FA; 
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    border-radius: 2px;
+
+    font-family: PingFangSC-Light,"Microsoft YaHei";
+    font-size: 14px;
+    color: #26104D;
+    letter-spacing: 0.5px;
+    text-align: center;
+    padding: 0 auto;
+    margin: 0 auto;
+
+    transition: all ease-out 0.1s;
+}
+.genBtn:hover{
+    transform: translate(-1px,-2px);
+    background: rgb(233, 196, 252);
+    box-shadow: 1 1 3px 0 rgb(80, 33, 160), 0 3px 3px 0 rgb(80, 33, 160);
+    border-radius: 2px;
+    cursor: pointer;
+
+    color: rgb(80, 33, 160);
+}
+
+.genBtn:active{
+    transform: translate(0px,0px);
+    background:#DCB3FA; 
+    box-shadow: 0 0 2px 0 rgb(80, 33, 160), 0 2px 2px 0 rgb(80, 33, 160);
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    color: rgb(80, 33, 160); 
+}
+.cbox{
+    left: 432px;
+
+    width: 16px;
+    height: 16px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    /* border: 2px solid rgba(255,255,255,0.70); */
+    border-radius: 3px;
+    transition: all ease-in 0.05s;
+}
+
+.cboxBGoff{
+    border: 2px solid rgba(255,255,255,0.70);
+    background: transparent;
+}
+.cboxBGon{
+    border: 2px solid rgba(255,255,255,1);
+    background: url('imgs/checked.svg');
+}
+
+
+.cbox:hover{
+    border: 2px solid #CCA4F6;
+}
+.inputtxt{
+    left: 361px;
+
+    width: 64px;
+    height: 20px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    
+    font-family: PingFangSC-Light,"Microsoft YaHei";
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.inputLine1{
+    left: 427px;
+    top: 205px;
+    width: 30px;
+    height: 2px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.inputLine2{
+    left: 427px;
+    top: 228px;
+    width: 30px;
+    height: 2px;
+    
+    padding: 0 auto;
+    margin: 0 auto;
+    position: absolute;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.pathTxt{
+    font-family: PingFangSC-Light,"Microsoft YaHei";
+    font-size: 12px;
+    color: rgba(255,255,255,0.50);
+    
+    line-height: 24px;
+    transition: all ease-in 0.1s;
+}
+.pathTxt:hover{
+    color: rgba(255,255,255,0.90);
+}
+.pathTxt:active{
+    color: rgba(255,255,255,0.90);
+}
+
+.inputFrame{
+    background: rgba(0, 0, 0, 0.0);
+    outline-color: invert ;
+	outline-style: none ;
+	outline-width: 0px ;
+	border: none ;
+	border-style: none ;
+	text-shadow: none ;
+	-webkit-appearance: none ;
+	-webkit-user-select: text ;
+	outline-color: transparent ;
+    box-shadow: none;
+    transition: all ease-in .1s;
+}
+.inputFrame:hover{
+    background:  rgba(0, 0, 0, 0.1);
+}
+.inputFramePos1{
+    left: 124px;
+    top: 69px;
+    width: 227px;
+    height: 24px;
+    position: absolute;
+}
+.inputFramePos2{
+    left: 124px;
+    top: 133px;
+    width: 227px;
+    height: 24px;
+    position: absolute;
+}
+.inputFramePos3{
+    left: 427px;
+    top: 186px;
+    width: 30px;
+    height: 24px;
+    position: absolute;
+}
+.inputFramePos4{
+    left: 427px;
+    top: 209px;
+    width: 30px;
+    height: 24px;
+    position: absolute;
+}
+.bznrtxtBig{
+    font-family: PingFangSC-Semibold,"Microsoft YaHei";
+    font-size: 24px;
+    color: rgba(255,255,255,1);
+    
+    line-height: 48px;
+    text-align: center;
+}
+.bznrtxt{
+    font-family: PingFangSC-Light,"Microsoft YaHei";
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+    
+    line-height: 24px;
+    text-align: left;
+}
+.helpBoard{
+    position: relative;
+    left: 50px;
+    width: 368px;
+    height: 144px;
+    resize: none;
+    border:0;
+    outline: none;
+    font-size: 12px;
+    background:rgb(52, 52, 52);
+    color: #fff;
+  }
+    </style>
+</head>
+<body>
+<div class="BX_AEComposition" id="comp" AELayerName="mainPal">
+    <p class="titleText" id="titleT">_BX Webp/Apng Exporter_</p>
+    <div class="splitLine"></div>
+    <div class="webpPathBtnPos normalBtn" id="webpBtn">
+        <p class="btntxt1" id="webpbtnT">WEBP 地址</p>
+    </div>
+    <div class="apngPathBtnPos normalBtn" id="apngBtn">
+        <p class="btntxt1" id="apngbtnT">APNG 地址</p>
+    </div>
+    <div class="pathLine1"></div>
+    <!-- <div class="pathText1"></div> -->
+    
+    <input type="text" spellcheck="false" id="webpPathInput" value="..." size="5" class="inputFrame inputFramePos1 pathTxt"  style="text-align: left;">
+    <input type="text" spellcheck="false" id="apngPathInput" value="..." size="5" class="inputFrame inputFramePos2 pathTxt"  style="text-align: left;">
+
+    <div class="pathLine2"></div>
+    <!-- <div class="pathText2"></div> -->
+    <div type="button" class="helpBtn normalBtn" id="bz">
+            <p class="btntxt1" id="bztxt">帮助/设置</p>
+    </div>
+    <div class="genBtn" id="genBtn">
+            <p class="btntxt2" id="genbtnT">生 成</p>
+    </div>   
+    <p class="cbtxt" style="top: 71px;" id="cb1T">是否导出</p>
+    <p class="cbtxt" style="top: 135px;" id="cb2T">是否导出</p>
+
+    <div id="webpCheck" class="cbox cboxBGoff" style="top: 72px;"></div>
+    <div id="apngCheck" class="cbox cboxBGoff" style="top: 136px;"></div>
+
+    <p class="inputtxt" style="top: 188px;"  id="inputqT">画质设置</p>
+    <input type="text" id="qInput" onfocus="" spellcheck="false" value="80" size="5" class="inputFrame inputFramePos3 pathTxt" style="text-align: center;">
+    <p class="inputtxt" style="top: 211px;"  id="inputloopT">循环次数</p>
+    <input type="text" id="lInput" spellcheck="false" value="∞" size="5" class="inputFrame inputFramePos4 pathTxt" style="text-align: center;">
+    <div class="inputLine1"></div>
+    <div class="inputLine2"></div>
+
+    <div class="newPanelMatt" id="matt" style="pointer-events: none;">
+        <!-- 帮助 -->
+        <div id="helpGroup" style="display:none;">
+            <h1 class="bznrtxtBig">-帮 助-</h1>
+            <textarea class="helpBoard" id="bangzhuneirong" readonly="readonly"></textarea>
+            <br/>
+            <br/>
+        </div>
+        <!-- 帮助 -->
+
+        <!-- 警告 -->
+        <div id="warningGroup" style="display:none;">
+            <br/> <br/> <br/>
+            <h1 class="bznrtxtBig" id="noteTxt">这是提示内容</h1>
+            <br/> <br/>
+        </div>
+
+        <div class="normalBtn closeBTN" id="clsbtn">
+            <p class="btntxt1" id="clsbtnT"> 返 回 </p>
+        </div>
+        <div class="normalBtn homeBTN" id="homebtn">
+            <p class="btntxt1" id="homePagebtnT">项目主页</p>
+        </div>
+        <!-- 警告结束 -->
+    </div>
+</div>
+
+<script type="text/javascript">
+
+var csInterface = new CSInterface();
+
+var expApng = false;
+var expWebp = false;
+
+
+function slashSwitch(str,fx){
+    if(fx==1){
+        return str.replace(/\//g,"\\");
+    }else if(fx==2){
+        return str.replace(/\\/g,"\\\\");
+    }else if(fx==3){
+        return str.replace(/\//g,"\\\\");
+    }else{
+        return str.replace(/\\/g,"\/");
+    }
+    
+}
+
+var win = csInterface.getOSInformation().indexOf("Mac") >=0 ? false:true;
+
+var dcm = csInterface.getSystemPath(SystemPath.MY_DOCUMENTS);
+var etPath = csInterface.getSystemPath(SystemPath.EXTENSION);
+var appPath = {
+            mac:[etPath+"/apps/mac/pngquant",
+                etPath+"/apps/mac/img2webp",
+                etPath+"/apps/mac/apngasm"],
+            win:[slashSwitch(etPath,3)+"\\\\apps\\\\win\\\\pngquant.exe",
+            slashSwitch(etPath,3)+"\\\\apps\\\\win\\\\img2webp.exe",
+            slashSwitch(etPath,3)+"\\\\apps\\\\win\\\\apngasm64.exe"]
+            }
+var dstp = dcm.substring(0,dcm.lastIndexOf("/")+1) + 'Desktop/';
+
+var bz = document.getElementById("bz");
+    bz.addEventListener("click", bzclick);
+var bztxt = document.getElementById("bztxt");
+
+var genBtn = document.getElementById("genBtn");
+
+var apngP = document.getElementById('apngPathInput');
+var webpP = document.getElementById('webpPathInput');
+
+var apngBtn = document.getElementById('apngBtn');
+var webpBtn = document.getElementById('webpBtn');
+
+var webpCheck = document.getElementById('webpCheck');
+var apngCheck = document.getElementById('apngCheck');
+
+var qInput = document.getElementById('qInput');
+var lInput = document.getElementById('lInput');
+
+var clshelp = document.getElementById("clsbtn");
+    clshelp.addEventListener("click", closeMatt);
+var gotoHome = document.getElementById("homebtn");
+    gotoHome.addEventListener("click", function(){
+        csInterface.openURLInDefaultBrowser("https://github.com/bigxixi/webp_apng_exporter_for_AE");
+    });
+// var matt = document.getElementById("matt");
+//     matt.addEventListener("click", mattclick);
+
+var helpGroup = document.getElementById('helpGroup');
+var warningGroup = document.getElementById('warningGroup');
+
+function closeMatt(){
+    matt.className = "newPanelMatt newPanelOut";
+    matt.style.pointerEvents = "none";
+    window.setTimeout(function(){
+            matt.className = "newPanelMatt";
+    },100)
+}
+
+function noteUp(txt){
+    var note = document.getElementById('noteTxt');
+        note.innerHTML = txt;
+}
+
+var curCompName;
+
+csInterface.evalScript("getCurCompName()",function(result){
+        curCompName = result;
+        
+    });
+
+function setLan(lan){
+    document.getElementById("titleT").innerHTML = bxStr.title[lan];
+    document.getElementById("webpbtnT").innerHTML = bxStr.webpBtn[lan];
+
+}
+
+function genNote(note){
+    warningGroup.style.display = "block";
+    helpGroup.style.display = "none";
+    matt.className = "newPanelMatt newPanelIn";
+    matt.style.pointerEvents = "all";
+    noteUp(note);
+}
+
+window.onload = function(){
+
+    //埋点
+    csInterface.evalScript("updateLan()",function(theLan){
+            if(theLan != "zh_cn"){
+                setLan("en_us");
+            }else{
+                setLan(theLan);
+            }
+        });
+
+
+    csInterface.evalScript("checkAccess()",function(result){
+        if(result == "0"){
+            genNote("请勾选 「首选项」->「常规」->「允许脚本写入文件和访问网络」。\n如果您是 AE 2019 ，则在最下方「脚本和表达式」选项卡中");
+            window.setTimeout(function(){
+                csInterface.evalScript("app.executeCommand(2359)");
+            },2000)
+        }
+    });
+
+
+    csInterface.evalScript("fileExist("+0+")",function(result){
+        if(result == "0"){
+            genNote("未找到转换主程序！");
+        }
+    });
+
+    csInterface.evalScript("checkSettings('BX_APNGWEBP','exportApng')",function(result){
+        if(result == "false"){
+            expApng = false;
+            apngCheck.className = "cbox cboxBGoff";
+        }else{
+            expApng = true;
+            apngCheck.className = "cbox cboxBGon";
+        }
+    });
+
+    csInterface.evalScript("checkSettings('BX_APNGWEBP','exportWebp')",function(result){
+        if(result == "false"){
+            expWebp = false;
+            webpCheck.className = "cbox cboxBGoff";
+        }else{
+            expWebp = true;
+            webpCheck.className = "cbox cboxBGon";
+        }
+    });
+
+    csInterface.evalScript("checkSettings('BX_APNGWEBP','apngPath')",function(result){
+        var apngPathTemp1 =  dstp + curCompName + ".png";
+        if(result != "false"){
+            apngPathTemp1 = result;
+        }
+        if(win == true){
+            apngPathTemp1 = slashSwitch(result,1);
+        }
+        apngP.value = apngPathTemp1;
+    });
+
+    csInterface.evalScript("checkSettings('BX_APNGWEBP','webpPath')",function(result){
+        var webpPathTemp1 =  dstp + curCompName + ".webp";
+        if(result != "false"){
+            webpPathTemp1 = result;
+        }
+        if(win == true){
+            webpPathTemp1 = slashSwitch(result,1);
+        }
+        webpP.value = webpPathTemp1;
+    });
+
+    csInterface.evalScript("checkSettings('BX_APNGWEBP','quality')",function(result){
+        if(result == "false"){
+            qInput.value = "80";
+        }else{
+            qInput.value = result;
+        }
+    });
+
+    csInterface.evalScript("checkSettings('BX_APNGWEBP','loop')",function(result){
+        if(result == "false"){
+            lInput.value = "∞";
+        }else{
+            if(result == 0){
+                result = "∞";
+            }
+            lInput.value = result;
+        }
+    });
+
+
+}
+
+apngBtn.addEventListener("click",getApngPath);
+webpBtn.addEventListener("click",getWebpPath);
+
+apngCheck.addEventListener("click",checkApng);
+webpCheck.addEventListener("click",checkWebp);
+
+function checkApng(){
+    if(expApng){
+        expApng = false;
+        apngCheck.className = "cbox cboxBGoff";
+        csInterface.evalScript("saveSettings('BX_APNGWEBP','exportApng','false')");
+    }else{
+        expApng = true;
+        apngCheck.className = "cbox cboxBGon";
+        csInterface.evalScript("saveSettings('BX_APNGWEBP','exportApng','true')");
+    }
+}
+function checkWebp(){
+    if(expWebp){
+        expWebp = false;
+        webpCheck.className = "cbox cboxBGoff";
+        csInterface.evalScript("saveSettings('BX_APNGWEBP','exportWebp','false')");
+    }else{
+        expWebp = true;
+        webpCheck.className = "cbox cboxBGon";
+        csInterface.evalScript("saveSettings('BX_APNGWEBP','exportWebp','true')");
+
+    }
+}
+
+
+
+function getApngPath(){
+    csInterface.evalScript("getPath('"+apngP.value+"')",function(result){
+        if(result != "null"){
+            var apngPathTemp2 = result;
+            if(result.substring(result.lastIndexOf(".")+1,result.length) != "png"){
+                apngPathTemp2 = apngPathTemp2+".png";
+            }
+            expApng = true;
+            apngCheck.className = "cbox cboxBGon";
+
+            apngP.value = apngPathTemp2;
+            if(win == true){
+                csInterface.evalScript("saveSettings('BX_APNGWEBP','apngPath','"+slashSwitch(apngPathTemp2,0)+"')");
+            }else{
+                csInterface.evalScript("saveSettings('BX_APNGWEBP','apngPath','"+apngPathTemp2+"')");
+            }
+            
+            csInterface.evalScript("saveSettings('BX_APNGWEBP','exportApng','true')");
+        }
+    });
+}
+
+function getWebpPath(){
+    csInterface.evalScript("getPath('"+slashSwitch(webpP.value,2)+"')",function(result){
+        if(result != "null"){
+            var webpPathTemp2 = result;
+            if(result.substring(result.lastIndexOf(".")+1,result.length) != "webp"){
+                webpPathTemp2 = webpPathTemp2+".webp";
+            }
+            expWebp = true;
+            webpCheck.className = "cbox cboxBGon";
+            if(win == true){
+                csInterface.evalScript("saveSettings('BX_APNGWEBP','webpPath','"+slashSwitch(webpPathTemp2,0)+"')");
+            }else{
+                csInterface.evalScript("saveSettings('BX_APNGWEBP','webpPath','"+webpPathTemp2+"')");
+            }
+            webpP.value = webpPathTemp2;
+            
+            csInterface.evalScript("saveSettings('BX_APNGWEBP','exportWebp','true')");
+        }
+    });
+}
+
+inputing(qInput,true,"quality");
+inputing(lInput,true,"loop");
+
+inputing(webpP,false,"webpPath");
+inputing(apngP,false,"apngPath");
+
+function inputing(element,ifClear,settingName){
+    var beforeV = element.value;
+
+　　element.onfocus=function(){
+        if(ifClear){
+            this.value='';
+        }
+　　};
+
+　　element.onblur=function(){
+    //还需多测试。。。
+　　　　if(this.value == ""){
+　　　　　　this.value = beforeV;
+　　　　}else{
+        if(settingName == "quality"){
+                if(this.value%1 == 0 && (this.value >= 0 && this.value <= 100)){
+                    //若输入范围正确
+                }else{
+                    genNote("请输入0-100之间的正整数");
+                    this.value = 80;
+                }
+            }else if(settingName == "loop"){
+                if(this.value%1 === 0 && this.value >= 0 || this.value == "∞"){
+                    if(this.value == 0){
+                        this.value = "∞";
+                    }
+                    //若输入范围正确
+                }else{
+                    genNote("请输入大于零的整数");
+                    this.value = "∞";
+                }
+            }else{
+
+            };
+        csInterface.evalScript("saveSettings('BX_APNGWEBP','"+settingName+"','"+slashSwitch(this.value,0)+"')");
+        };
+　　};　
+}
+
+function bzclick(){
+    
+    var bznr = document.getElementById("bangzhuneirong");
+        bznr.value = '插件版本 1.0 ，包含了以下软件:\n'+
+                'img2webp\n'+
+                'https://developers.google.com/speed/webp/docs/precompiled/\n'+
+                'apngasm\n'+
+                'http://apngasm.sourceforge.net/\n'+
+                'pngquant\n'+
+                'https://pngquant.org/\n'+
+                ''+
+                '使用步骤：\n'+
+                '1、AE 中打开需要导出的合成，在「合成设置」中设置好帧率。\n'+
+                '2、在「窗口」-「扩展」中运行「BX Webp/Apng Expoter」。\n'+
+                '3、选择要导出的格式的对应导出地址，并根据情况勾选「是否导出」。\n'+
+                '（点击「WEBP 地址」、「APNG地址」按钮来选取，也可以手动输入、修改。）\n'+
+                '4、设置画质，取值为0-100之间的整数，数字越大画质越好，图片越大。\n'+
+                '5、设置循环次数，取值为整数，0为无限循环。\n'+
+                '\n'+
+                'by BigXiXi';
+
+    warningGroup.style.display = "none";
+    helpGroup.style.display = "block";
+
+    matt.className = "newPanelMatt newPanelIn";
+    matt.style.pointerEvents = "all";
+}
+
+function mattclick(){
+    matt.className = "newPanelMatt newPanelOut";
+}
+
+genBtn.addEventListener("click",genIMGs);
+
+function genIMGs(){
+    //如果apng webp地址不同且要同时导出，则只导出1份序列帧，生成完成后移动文件
+    function formatL(l){
+        if(l=="∞"){
+            return 0;
+        }else{
+            return l;
+        }
+    }
+    var theQ = qInput.value;//在输入时处理非法数值
+    var theL = formatL(lInput.value);//处理 ∞ 符号 
+    var tempCMDpath,tempWebpPath,tempApngPath,tempAppPath;
+        tempAppPath = JSON.stringify(appPath);
+
+    if(win == true){
+        tempCMDpath = slashSwitch(dstp,1);
+        tempWebpPath = webpP.value;
+        tempApngPath = apngP.value;
+    }else{
+        tempCMDpath = etPath;
+        tempWebpPath = webpP.value;
+        tempApngPath = apngP.value;
+    }
+    if(expWebp && expApng){
+        csInterface.evalScript("genAssets('"+slashSwitch(tempCMDpath,2)+"','"+slashSwitch(tempWebpPath,2)+"','"+slashSwitch(tempApngPath,2)+"','"+tempAppPath+"',1,'"+theQ+"','"+theL+"')",function(p){
+                //
+        });
+
+    }else if(expApng){
+        csInterface.evalScript("genAssets('"+slashSwitch(tempCMDpath,2)+"','"+slashSwitch(tempApngPath,2)+"','"+slashSwitch(tempApngPath,2)+"','"+tempAppPath+"',2,'"+theQ+"','"+theL+"')",function(p){
+                //
+        });
+s
+    }else if(expWebp){
+        csInterface.evalScript("genAssets('"+slashSwitch(tempCMDpath,2)+"','"+slashSwitch(tempWebpPath,2)+"','"+slashSwitch(tempWebpPath,2)+"','"+tempAppPath+"',3,'"+theQ+"','"+theL+"')",function(p){
+                //
+        });
+
+    }else{
+        genNote("请选择要导出的格式");
+    }
+}
+
+</script>
+</body>
+</html>
