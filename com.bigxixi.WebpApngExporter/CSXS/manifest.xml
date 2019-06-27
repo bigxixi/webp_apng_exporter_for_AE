@@ -6,8 +6,8 @@
 	</ExtensionList>
 	<ExecutionEnvironment>
 		<HostList>
-			<Host Name="AEFT" Version="[13.0,15.9]"/>
-            <Host Name="AEFX" Version="[13.0,15.9]"/>
+			<Host Name="AEFT" Version="[13.0,18.9]"/>
+            <Host Name="AEFX" Version="[13.0,18.9]"/>
 		</HostList>
 		<LocaleList>
 			<Locale Code="All" />
