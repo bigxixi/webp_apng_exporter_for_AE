@@ -3,6 +3,11 @@
 
 [<img src="https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/bxwebpanpgexporter/bxwebpapngexporter.png" width="50%" height="30%">](http://bigxixi.com/donate/index.html)
 
+## 注意！！！导出地址千万不要设为桌面！！！！
+## 部分朋友反馈导出到桌面导致了数据丢失！！！
+## 点击「生成」前请查看两个导出地址最后是不是「/.webp」或者「/.png」，如果是，请改成「/xxx.webp」或者「/xxx.png」再导出！  
+
+[<img src="https://pic4.zhimg.com/80/v2-c8fbe402f03a04d455d39befeb74bf9f_hd.jpg" width="50%" height="30%">](http://bigxixi.com/donate/index.html)  
 
 ## 如何安装
 1. 下载 `BX-WebpApngExporter.zxp` 文件，[`在这里右键 - 链接另存为`](https://raw.githubusercontent.com/bigxixi/webp_apng_exporter_for_AE/master/BX-WebpApngExporter.zxp).</br>
