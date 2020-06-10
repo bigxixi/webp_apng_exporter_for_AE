@@ -818,7 +818,7 @@ function inputing(element,ifClear,settingName){
 function bzclick(){
     
     var bznr = document.getElementById("bangzhuneirong");
-        bznr.value = '插件版本 1.0 ，包含了以下软件:\n'+
+        bznr.value = '插件版本 1.0.1 ，包含了以下软件:\n'+
                 'img2webp\n'+
                 'https://developers.google.com/speed/webp/docs/precompiled/\n'+
                 'apngasm\n'+
@@ -850,6 +850,18 @@ function mattclick(){
 genBtn.addEventListener("click",genIMGs);
 
 function genIMGs(){
+    //检测有没有直接设为桌面导出，防止杯具
+    function checkNull(char){
+    var dotIdx = char.lastIndexOf(".");
+    if(char[dotIdx-1]=="/" || char[dotIdx-1]=="\\"){
+            return true;
+        };
+        
+    }
+    if(checkNull(webpP.value) == true || checkNull(apngP.value) == true ) {
+       alert("导出地址错误，请重新设置");
+       return;
+    }
     //如果apng webp地址不同且要同时导出，则只导出1份序列帧，生成完成后移动文件
     function formatL(l){
         if(l=="∞"){
