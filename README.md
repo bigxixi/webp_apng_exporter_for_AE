@@ -1,6 +1,8 @@
 # BX-WebpApngExporter
 将 AE 合成中的动画直接导出为 webp 或者 apng 格式。  
 
+2022.10.08 更新：支持 AE 2022  
+
 [<img src="https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/bxwebpanpgexporter/bxwebpapngexporter.png" width="50%" height="30%">](http://bigxixi.com/donate/index.html)
 
 ## 注意！！！导出地址千万不要设为桌面！！！！
