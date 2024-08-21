@@ -231,7 +231,7 @@ function genAssets(etloc,loc,loc2,appPath,type,q,l){
                             "open \"" + ppFolder0 + "\";"+
                             "open \"" + ppFolder1 + "\";"+
                             "osascript -e 'tell application \"Terminal\" to close first window' & exit;";
-                    var tempcmds = "chmod +x '" + CMDpath + "'";
+                    var tempcmds = "chmod +x '" + CMDpath + "';";
                 }else{
                     CMDvar ='@echo off\n'+
                         'setlocal enabledelayedexpansion\n'+
@@ -282,7 +282,7 @@ function genAssets(etloc,loc,loc2,appPath,type,q,l){
                     "rm \"" + CMDpath + "\";"+
                     "open \"" + ppFolder1 + "\";"+
                     "osascript -e 'tell application \"Terminal\" to close first window' & exit;";
-                var tempcmds = "chmod +x '" + CMDpath + "'";
+                var tempcmds = "chmod +x '" + CMDpath + "';";
                 }else{
                     CMDvar ='@echo off\n'+
                     'setlocal enabledelayedexpansion\n'+
@@ -325,7 +325,7 @@ function genAssets(etloc,loc,loc2,appPath,type,q,l){
                             "rm \"" + CMDpath + "\";"+
                             "open \"" + ppFolder0 + "\";"+
                             "osascript -e 'tell application \"Terminal\" to close first window' & exit;";
-                    var tempcmds = "chmod +x '" + CMDpath + "'";
+                    var tempcmds = "chmod +x '" + CMDpath + "';";
                 }else{
                     CMDvar ='@echo off\n'+
                     'setlocal enabledelayedexpansion\n'+
@@ -371,6 +371,11 @@ function genAssets(etloc,loc,loc2,appPath,type,q,l){
     temp.write(CMDvar);
     temp.close();
     if($.os.toLowerCase().indexOf("mac") == 0){
+        // Fix: 修改Mac下本地app权限, 否则会因权限导致导出异常
+        for (var k = 0; k < OSappPath.length; k++) {
+            tempcmds +=  "chmod +x '" + OSappPath[k] + "'; ";
+        }
+
         system.callSystem(tempcmds);
     }
     temp.execute();
